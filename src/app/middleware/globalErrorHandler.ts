@@ -9,7 +9,7 @@ import handleCastError from "../errors/handleCastError";
 import handleDuplicateError from "../errors/handleDuplicateError";
 import AppError from "../errors/AppError";
 
-const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
+const globalErrorHandler: ErrorRequestHandler = (err, req, res, next): void => {
   let statusCode = 500;
   let message = 'Something went wrong!';
   let errorMessages: TErrorSources = [
@@ -58,7 +58,7 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     ];
   }
 
-  return res.status(statusCode).json({
+   res.status(statusCode).json({
     success: false,
     message,
     errorMessages,
